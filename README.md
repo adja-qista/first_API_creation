@@ -1,20 +1,18 @@
 # first_API_creation
 
 ### 1.packaging the code into an image
-Open a terminal and cd to the directory that contains the Dockerfile. 
-Then execute the following command: docker build . -t adja_api.
+docker build . -t adja_api 
+docker run docker run -d -p 8000 adja_api  # to test on local
 
-### 2.Running the image
-docker run -it adja_api python -m uvicorn tuto:app --reload
 
-### 3. Pushing to Docker Hub
-First we’ll need to create an account: go to https://hub.docker.com to sign up. Then we need to create a repository; this is a place where your image will go. I’ve named mine medium_cmd_app.
+### 2. Pushing to Docker Hub
+* docker tag adja_api adjamagatte16/first_fastapi1
+* docker push [your_dockerhub_username]/[your_respo_name]: 
+    docker push adjamagatte16/first_fastapi1
 
-The next step is to open a terminal, log in to Docker Hub and push (upload) your image. Here’s how to do it:
-
-Open a terminal
-CD to your project directory
-docker login → enter your credentials
-Build the image again but with the following tag:
-docker build . -t [your_dockerhub_username]/[your_respo_name]
-5. docker push [your_dockerhub_username]/[your_respo_name]
+### 3.Running the image on my vm
+* create a vm on gcp
+* Allow tcp at port 8000 on the firewall for the vm
+* docker run -d -p 8000:8000 adjamagatte16/first_fastapi1 
+* see the result at the external @ of the vm with internal:external port: @/8000:8000
+# AUTOMATE THE PROCESS
